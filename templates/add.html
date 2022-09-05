@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Add new trainee {% endblock %}
+
+{% block content %} 
+
+<br> <br><br>
+    <div id="todo-wrap" style="border-radius: 30px;border: 4px solid rgb(84, 49, 72);">
+        <!-- (A) HEADER -->
+        <h1>TO DO LIST</h1>
+  
+        <!-- (B) ADD NEW ITEM -->
+        <form class="todo-row" method="post">
+          <input type="hidden" name="req" value="save"/>
+          <input type="text" name="txt" class="todo-item" placeholder="Item Description"
+                 name="txt" required/>
+          <input type="submit" class="todo-save" value="Add"/>
+        </form>
+  
+        <!-- (C) LIST ITEMS -->
+        <div id="todo-list">
+        {% for row in rows %}
+        <form class="todo-row" method="post" id="todo-row-{{ row[0] }}">
+          <input type="hidden" name="req" value="save"/>
+          <input type="hidden" name="id" value="{{ row[0] }}"/>
+          <input type="button" class="todo-del" value="X" onclick="remove({{ row[0] }})"/>
+          <input type="text" class="todo-item" placeholder="Item Description"
+                 name="txt" value="{{ row[1] }}" required/>
+          <input type="submit" class="todo-save" value="Save"/>
+        </form>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %} 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Upload {% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="edit">
+    <form method="POST">
+      <label for="txt" class="form-label" style="margin: auto;text-align: center;"><h1>Update Your Task</h1></label>
+     <div>
+      <input type="text" name="txt" value="{{row[1]}}" class="form-control" style=" font-weight: bold;  background-color: #ebdce6; color:  rgb(84, 49, 72);  " id="txt" >
+      <br>
+      <button type="submit" class="btn btn-primary" style=" font-weight: bold;  background-color: rgb(84, 49, 72); color: #ebdce6;  margin: auto;text-align: center;border:  4px solid rgb(84, 49, 72);border-radius: 15px;" >Save</button>
+     </div>
+   </form>
+ </div>
+
+{% endblock %}

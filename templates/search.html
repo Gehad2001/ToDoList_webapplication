@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} search {% endblock %}
+{% block content %} 
+<br><br>
+<table class="table table-bordered" style="border: 4px solid rgb(84, 49, 72) ; background-color:  #ebdce6; border-radius:15px;">
+    <thead>
+      <tr>
+       
+        <th scope="col">Your Tasks</th>
+        <th scope="col">Edit Your Task</th>
+        <th scope="col">Delete Your Task</th>
+        <th scope="col">Done The Task</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+      <tr>
+        <td>{{row['txt']}}</td>
+        <td><a href="{{url_for('update',id=row['id'])}}" class="btn btn-primary"  class="btn btn-primary" style="background-color: rgb(84, 49, 72) ; border-color: aliceblue;">Edit</a></td>
+        <td><a href="{{url_for('delete',id=row['id'])}}" class="btn btn-primary"  class="btn btn-primary" style="background-color: rgb(84, 49, 72) ; border-color: aliceblue;">Delete</a>
+        <td><a href="{{url_for('status_done',id=row['id'])}}" class="btn btn-primary"  class="btn btn-primary" style="background-color: rgb(84, 49, 72) ; border-color: aliceblue;">Done</a>
+        
+        </td>
+      </tr>
+      {% endfor %}
+     
+    </tbody>
+  </table>
+{% endblock %}

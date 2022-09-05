@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} search {% endblock %}
+{% block content %} 
+<br><br>
+<div class="up" >
+<title> uploaded </title>
+<h2 class="center">upload your achievements</h2>
+<br>
+{% if filename %}
+	<div class="center">
+		<img src="{{ url_for('display_image', filename=filename) }}" style="width: 350px; height:250px">
+	</div>
+{% endif %}
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+      <div class="center">
+		<ul style="list-style:none ;">
+		{% for message in messages %}
+		<li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+      </div>
+	  {% endif %}
+	{% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data" value="Upload your achievements" class="form" >
+			<input type="file" name="file" autocomplete="off"  value="upload your achievements">
+		<input type="submit" value="Save" style=" font-weight: bold;  background-color:  rgb(84, 49, 72);color:  #ebdce6; " >
+</form>
+</div>
+{% endblock %}

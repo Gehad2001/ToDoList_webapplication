@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block content %} 
+<br><br><br>
+<div class="welcome">
+<h1 class="h">Welcome to your Tasks </h1>
+<ul>
+    {% for row in data %}
+    <li>
+      <div class="task" {% if  row['task_status'] %} style="text-decoration:line-through;" {% endif %} >{{row['txt']}} </div>
+        
+        <div class="b">
+        <a  href="{{url_for('status_done',id=row['id'])}}" class="btn btn-primary" style="background-color: rgb(84, 49, 72) ; border-color: aliceblue;">Done</a>
+        <a href="{{url_for('update',id=row['id'])}}" class="btn btn-primary" style="background-color: rgb(84, 49, 72) ;border-color: aliceblue;">Edit</a>
+        <a href="{{url_for('delete',id=row['id'])}}" class="btn btn-primary" style="background-color: rgb(84, 49, 72) ;border-color: aliceblue;">Delete</a>
+      </div>
+    </li>
+    {% endfor %}
+</ul>
+</div>  
+
+{% endblock %}
